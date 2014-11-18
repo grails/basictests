@@ -5,7 +5,7 @@ class PersonController {
     static allowedMethods = [create: 'POST']
 
     def count() {
-        def numberOfPeople = 0
+        def numberOfPeople = Person.count()
 
         render "There are ${numberOfPeople} people in the database."
     }
@@ -14,6 +14,7 @@ class PersonController {
         if(person.hasErrors()) {
             flash.message = 'An error occurred creating the person.'
         }
+        person.save()
         redirect action: 'count'
     }
 }

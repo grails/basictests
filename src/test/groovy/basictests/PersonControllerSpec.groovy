@@ -39,6 +39,14 @@ class PersonControllerSpec extends Specification {
         !flash.message
         response.status == 302
         response.redirectedUrl == '/person/count'
+
+        when:
+        response.reset()
+        controller.count()
+
+        then:
+        response.status == 200
+        response.text == 'There are 1 people in the database.'
     }
 
     void 'test create action with invalid data'() {
