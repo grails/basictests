@@ -16,6 +16,4 @@ class PersonController {
         }
         redirect action: 'count'
     }
-
-    def jeff(Person p) {}
 }
